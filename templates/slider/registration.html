@@ -17,7 +17,7 @@
                                 <ng-include src="::'templates/slider/registration-fields.html'"></ng-include>
                             </div>
                             <div ng-if="conf.registration.showCallVerificationMessage" class="reg-list-item-wrapper-j registrationCallVerificationMessage-j">
-                                <p trans>Your registration will be approved after verification call</p>
+                                <p trans>Your registration will be approved after verification message</p>
                             </div>
                         </li>
                         <li ng-show="RegConfig.rightCol.length > 0">
@@ -49,13 +49,13 @@
                                         </div>
                                     </div>
                                     <span ng-show="conf.registration.minimumAllowedAge==18" class="hintReq" trans>and I am over 18 years of age and have read and accepted the general terms and conditions.</span>
-                                    <span ng-show="conf.registration.minimumAllowedAge==21" class="hintReq" trans>and I am over 21 years of age and have read and accepted the general terms and conditions.</span>
+                                    <span ng-show="conf.registration.maximumAllowedAge==62" class="hintReq" trans>and I not over the age of 62 and have read and accepted the general terms and conditions.</span>
 
 
                                 </label>
                                 <label ng-if="conf.registration.customTerms" for="checkbox-id"  ng-class="{'error': !resetError[agree] && registerform.agree.$error.required}">
                                     <span ng-bind-html="conf.registration.customTerms.prefix|translate|html"></span>
-                                    <a ng-if="!conf.registration.customTerms.urlsList" class="info-tooltip" ng-click="broadcast('window.openPopup', {url:conf.registration.customTerms.url.replace('languageCode', env.lang), title: '', params: 'toolbar=no,scrollbars=no,resizable=no,width=900,height=700'}); $event.stopPropagation()"><span ng-bind-html="conf.registration.customTerms.urlText|translate|html"></span></a>
+                                    <a ng-if="!conf.registration.customTerms.urlsList" class="info-tooltip" ng-click="broadcast('window.openPopup', {url:conf.registration.customTerms.url.replace('languageCode', env.lang), title: '', params: 'toolbar=no,scrollbars=no,resizable=no,width=600,height=450'}); $event.stopPropagation()"><span ng-bind-html="conf.registration.customTerms.urlText|translate|html"></span></a>
 
                                     <a ng-if="conf.registration.customTerms.urlsList"
                                        ng-repeat="link in conf.registration.customTerms.urlsList track by $index"
