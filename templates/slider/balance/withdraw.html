@@ -42,7 +42,7 @@
                     <div class="text-deposit-contain">
                         <p class="confirm-text" ng-if="selectedPaymentSystem.depositConfirmText" ng-bind-html="selectedPaymentSystem.depositConfirmText" trans></p>
                         <p trans>Please confirm money transfer</p>
-                        <p><span trans>Amount: </span> <span class="amount">{{paymentAmount.withdraw}} {{selectedPaymentSystem.customCurrency?(selectedPaymentSystem.customCurrency|translate):(currency_name|currency)}}</span></p>
+                        <p><span trans>Amount: </span> <span class="amount">{{N3000.withdraw}} {{selectedPaymentSystem.customCurrency?(selectedPaymentSystem.customCurrency|translate):(currency_name|currency)}}</span></p>
                     </div>
                     <external-form  form-target="{{::selectedPaymentSystem.stayInSameTabOnDeposit}}" params="externalFormParams" additional-fields="addFields" on-submit="confirmDeposit" button-caption="Confirm"></external-form>
                 </div>
@@ -146,20 +146,7 @@
                         </div>
                     </div>
 
-                    <!----  Free withdraw ----->
-                    <div ng-if="selectedPaymentSystem.isTransferToLinkedService && selectedPaymentSystem.name =='freevivaro'" ng-init="getLinkedInfo()" class="radio-contein-withdraw">
-                        <div ng-if="!selectedPaymentSystem.linkedInfo.linked_user_id && selectedPaymentSystem.linkedInfoLoaded">
-                            <label trans>User ID</label>
-                            <input name="username" ng-model="$parent.$parent.withdrawFormData.free_user_id" type="text" required="required">
-                        </div>
-                        <div ng-if="selectedPaymentSystem.linkedInfo.linked_user_id && selectedPaymentSystem.linkedInfoLoaded" class="withdraw-poker-info">
-                            <label>{{authData.login}}</label>
-                            <label>&#8681;</label>
-                            <label>{{selectedPaymentSystem.linkedInfo.linked_user_id}}</label>
-                        </div>
-                    </div>
-                </div>
-
+                   
                 <div class="cont-deposit-button" ng-show="!showConfirmation && !selectedPaymentSystem.onlyInfoTextOnWithdraw">
                     <div class="button-sign">
                         <button id="withdraw-button" ng-hide="selectedPaymentSystem.hideWithdrawButton" class="button-sign" title="{{(!paymentAmount.withdraw || paymentAmount.withdraw >= paymentAmount.availableWithdrawAmount ? 'Please enter the correct amount' : withdrawForm.$invalid ? 'Please select a bet-shop from the list.'  : '')|translate}}"
